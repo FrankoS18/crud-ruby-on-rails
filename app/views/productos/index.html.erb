@@ -1,0 +1,35 @@
+<p style="color: green"><%= notice %></p>
+
+<h1>Productos</h1>
+
+<table class="table table-dark table-striped">
+  <thead>
+    <tr>
+      <th scope="col">Nombre</th>
+      <th scope="col">Descripcion</th>
+      <th scope="col">Precio</th>
+      <th scope="col">Estado</th>
+      <th scope="col">Categoria</th>
+      <th scope="col"></th>
+      <th scope="col"></th>
+      <th scope="col"></th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @productos.each do |producto| %>
+      <tr id="<%= dom_id producto %>">
+      <th scope="row"><%= producto.nombre %></th>
+      <td><%= producto.descripcion %></td>
+      <td><%= producto.precio %> </td>
+      <td><%= producto.estado %></td>
+      <th><%= producto.categoria %></th>
+      <td><%= link_to "Detalle", producto, class: "btn btn-sm btn-primary" %></td>
+      <td><%= link_to "Editar", edit_producto_path(producto), class: "btn btn-sm btn-primary" %> </td>
+      <td><%= button_to "Eliminar", producto, method: :delete, class: "btn btn-sm btn-danger" %></td>
+    </tr>
+    <% end %>
+    
+  </tbody>
+</table>
+
+<%= link_to "New producto", new_producto_path, class: "btn btn-lg btn-secondary"%> 
